@@ -8,7 +8,7 @@
 # Site Settings
 locale                   : "en-US"
 title                    : ""
-title_separator          : "-"
+title_separator          : ""
 name                     : &name "Zirui Wang"
 description              : &description "MS. Student in Computer Science at Boston University"
 url                      : https://jerryw35.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "https://github.com/JerryW35"
+  github           : "JerryW35"
   google_plus      :
   keybase          :
   instagram        :
