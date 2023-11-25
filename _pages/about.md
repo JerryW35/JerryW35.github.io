@@ -13,4 +13,4 @@ I am Zirui Wang, currently pursuing my Master's in Computer Science at Boston Un
 
 My research interests involve a variety of areas such as data storage, stream processing systems, and parallel machine learning training. In addition, I am particularly interested in the area of machine learning systems.
 
-Currently, I'm doing summer research with [Prof.Yue Cheng](https://tddg.github.io/)
+Currently, I'm doing research intern with [Prof.Yue Cheng](https://tddg.github.io/)
