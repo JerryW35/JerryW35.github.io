@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Zirui Wang"
 title_separator          : ""
 name                     : &name "Zirui Wang"
-description              : &description "MS. Student in Computer Science at Boston University"
+description              : &description "Ph.D. Student in Computer Science at University of Virginia"
 url                      : https://jerryw35.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "https://github.com/JerryW35"
@@ -82,12 +82,12 @@ analytics:
 author:
   name             : "Zirui Wang"
   avatar           : "personal.png"
-  bio              : "MS. Student in Computer Science at Boston University"
-  location         : "Boston, MA"
+  bio              : "Ph.D. Student in Computer Science at University of Virginia"
+  location         : "Charlottesville, VA"
   employer         :
   pubmed           :
   googlescholar    : "https://scholar.google.com/citations?user=CSjZQngAAAAJ&hl=en&authuser=1"
-  email            :  "wzr@bu.edu"
+  email            :  "eeb9sd@virginia.edu"
   researchgate     :
   uri              :
   bitbucket        :
