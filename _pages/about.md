@@ -9,8 +9,6 @@ redirect_from:
 ---
 Hi!
 
-I am Zirui Wang, currently pursuing my Master's in Computer Science at Boston University. I completed my undergraduate studies in Computer Science and Technology at Hangzhou Dianzi University.
+I am Zirui Wang, first year Ph.D. student in the [DS2 Lab](https://ds2-lab.github.io/team/) at the University of Virginia advised by [Prof. Yue Cheng](https://tddg.github.io/).
 
-My research interests involve a variety of areas such as data storage, stream processing systems, and parallel machine learning training. In addition, I am particularly interested in the area of machine learning systems.
-
-Currently, I'm doing research intern with [Prof.Yue Cheng](https://tddg.github.io/)
+My research interests include machine learning system, cache system and distributed system. Feel free to reach out to me if you are interested in my research or have any questions.
