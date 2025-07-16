@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zirui Wang - Academic Homepage</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Zirui Wang</div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#publications" class="nav-link">Publications</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="typing-animation">Hello, I'm Zirui Wang</span>
+                    </h1>
+                    <p class="hero-subtitle">2nd-year PhD Student in Computer Science</p>
+                    <p class="hero-description">
+                        Research interests in machine learning systems and storage systems.
+                        Working on building efficient and scalable systems for next-generation data-intensive applications.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#publications" class="btn btn-primary">View Publications</a>
+                        <a href="./CV.pdf" class="btn btn-secondary" target="_blank">View CV</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <img src="./photo.JPG" alt="Zirui Wang">
+                        </div>
+                        <div class="profile-info">
+                            <h3>Zirui Wang</h3>
+                            <p>CS PhD Student</p>
+                            
+                            <div class="social-links">
+                                <a href="mailto:eeb9sd@virginia.edu" class="social-link"><i class="fas fa-envelope"></i></a>
+                                <a href="https://scholar.google.com/citations?user=LgRnfRAAAAAJ&hl=en" class="social-link"><i class="ai ai-google-scholar-square"></i></a>
+                                <a href="https://github.com/JerryW35" class="social-link"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/zirui-wang-7665aa336/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I am a PhD student in Computer Science at the University of Virginia, working under the supervision of <a href="https://tddg.github.io/" target="_blank">Prof. Yue Cheng</a> in the <a href="https://ds2-lab.github.io/" target="_blank">DS2 Lab</a>. 
+                        My research interests include machine learning systems, cache systems, and distributed systems. 
+                        I am dedicated to building efficient and scalable systems for next-generation data-intensive applications.
+                    </p>
+                    <p>
+                        My research focuses on addressing challenges in real-world storage systems, driven by the complexities of modern 
+                        data-intensive computer systems. I am particularly interested in serverless AI, storage systems for AI, and serverless computing 
+                        using an end-to-end approach that spans applications, middleware, platforms, and low-level operating systems.
+                    </p>
+                </div>
+                <div class="education">
+                    <h3>Education</h3>
+                    <div class="education-item">
+                        <div class="education-year">2024 - Present</div>
+                        <div class="education-details">
+                            <h4>PhD in Computer Science</h4>
+                            <p>University of Virginia</p>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-year">2022 - 2024</div>
+                        <div class="education-details">
+                            <h4>MS in Computer Science</h4>
+                            <p>Boston University</p>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-year">2018 - 2022</div>
+                        <div class="education-details">
+                            <h4>BS in Computer Science</h4>
+                            <p>Hangzhou Dianzi University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="publications-container">
+
+                <div class="publication-item">
+                    <div class="publication-year">2025</div>
+                    <div class="publication-content">
+                        <h3>"Efficient and Workload-Aware LLM Serving via Runtime Layer Swapping and KV Cache Resizing"</h3>
+                        <p class="authors">Zhaoyuan Su, Tingfeng Lan, <strong>Zirui Wang</strong>, Juncheng Yang, Yue Cheng</p>
+                        <p class="venue">Under Review</p>
+
+                        <div class="publication-links">
+                            <a href="https://www.arxiv.org/abs/2506.02006" class="pub-link">PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-year">2025</div>
+                    <div class="publication-content">
+                        <h3>"Towards Efficient LLM Storage Reduction via Tensor Deduplication and Delta Compression"</h3>
+                        <p class="authors"><strong>Zirui Wang</strong>, Tingfeng Lan, Zhaoyuan Su, Juncheng Yang, Yue Cheng</p>
+                        <p class="venue">23rd USENIX Symposium on Networked Systems Design and Implementation (NSDI 2026)</p>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/abs/2505.06252" class="pub-link">PDF</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                
+                <div class="publication-item">
+                    <div class="publication-year">2024</div>
+                    <div class="publication-content">
+                        <h3>"Everything You Always Wanted to Know About Storage Compressibility of Pre-Trained ML Models but Were Afraid to Ask"</h3>
+                        <p class="authors">Zhaoyuan Su, Ammar Ahmed, <strong>Zirui Wang</strong>, Ali Anwar, Yue Cheng</p>
+                        <p class="venue">50th International Conference on Very Large Data Bases (VLDB 2024)</p>
+
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2402.13429" class="pub-link">PDF</a>
+                </div>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="publication-year">2021</div>
+                    <div class="publication-content">
+                        <h3>"Temporal Cue Guided Video Highlight Detection with Low-Rank Audio-Visual Fusion"</h3>
+                        <p class="authors">Qinghao Ye*, Xiyue Shen*, Yuan Gao*, <strong>Zirui Wang</strong>*, Qi Bi, Ping Li, Guang Yang</p>
+                        <p class="venue">International Conference on Computer Vision (ICCV 2021)</p>
+                        <div class="publication-links">
+                            <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Ye_Temporal_Cue_Guided_Video_Highlight_Detection_With_Low-Rank_Audio-Visual_Fusion_ICCV_2021_paper.pdf" class="pub-link">PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Zirui Wang. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
