@@ -1,4 +1,4 @@
-/* 全局样式 */
+
 * {
     margin: 0;
     padding: 0;
@@ -34,7 +34,6 @@ body {
     overflow-x: hidden;
 }
 
-/* 导航栏 */
 .navbar {
     position: fixed;
     top: 0;
@@ -107,7 +106,6 @@ body {
     transition: 0.3s;
 }
 
-/* 主页部分 */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -321,7 +319,6 @@ body {
     100% { top: 15px; opacity: 0; }
 }
 
-/* 通用区块样式 */
 .section {
     padding: 5rem 0;
 }
@@ -343,7 +340,6 @@ body {
     background-clip: text;
 }
 
-/* 关于我部分 */
 .about-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -389,7 +385,6 @@ body {
     color: var(--text-dark);
 }
 
-/* 研究领域部分 */
 .research-section {
     background: var(--bg-gray);
 }
@@ -448,7 +443,6 @@ body {
     color: var(--text-light);
 }
 
-/* 发表论文部分 */
 .publications-container {
     max-width: 900px;
     margin: 0 auto;
@@ -515,7 +509,6 @@ body {
 }
 
 
-/* 页脚 */
 .footer {
     background: var(--bg-dark);
     color: white;
@@ -523,7 +516,6 @@ body {
     padding: 2rem 0;
 }
 
-/* 响应式设计 */
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -595,7 +587,6 @@ body {
     }
 }
 
-/* 自定义滚动条 */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -613,7 +604,6 @@ body {
     background: var(--secondary-color);
 }
 
-/* 加载动画 */
 @keyframes fadeInUp {
     from {
         opacity: 0;
