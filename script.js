@@ -256,9 +256,61 @@ document.addEventListener('DOMContentLoaded', function() {
         const img = new Image();
         img.src = src;
     });
+
+    // Display news from news_data.js with timeline and "Show More" functionality
+    const newsContainer = document.getElementById('news-container');
+    const newsToggleContainer = document.getElementById('news-toggle-container');
+    const newsToggleBtn = document.getElementById('news-toggle-btn');
+    
+    const INITIAL_NEWS_COUNT = 3; // Number of news items to show initially
+    let isExpanded = false;
+
+    if (newsContainer && typeof newsData !== 'undefined') {
+        newsContainer.innerHTML = ''; 
+        
+        newsData.forEach((item, index) => {
+            const newsItem = document.createElement('div');
+            newsItem.className = `news-item ${item.type || ''}`;
+            if (index >= INITIAL_NEWS_COUNT) {
+                newsItem.classList.add('hidden');
+            }
+            
+            newsItem.innerHTML = `
+                <div class="news-date">${item.date}</div>
+                <div class="news-content">${item.content}</div>
+            `;
+            
+            newsContainer.appendChild(newsItem);
+            observer.observe(newsItem);
+        });
+
+        // Show toggle button if there are more items
+        if (newsData.length > INITIAL_NEWS_COUNT) {
+            newsToggleContainer.style.display = 'block';
+            
+            newsToggleBtn.addEventListener('click', () => {
+                isExpanded = !isExpanded;
+                const hiddenItems = newsContainer.querySelectorAll('.news-item');
+                
+                hiddenItems.forEach((item, index) => {
+                    if (index >= INITIAL_NEWS_COUNT) {
+                        item.classList.toggle('hidden');
+                    }
+                });
+
+                newsToggleBtn.textContent = isExpanded ? 'Show Less' : 'Show More';
+                
+                // Optional: scroll back to news section top when collapsing
+                if (!isExpanded) {
+                    document.getElementById('news').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+    } else if (newsContainer) {
+        newsContainer.innerHTML = '<p class="error">News data not found.</p>';
+    }
     
 });
-
 // Utility function: detect device type
 function isMobile() {
     return window.innerWidth <= 768;

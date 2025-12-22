@@ -17,6 +17,7 @@
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#news" class="nav-link">News</a>
                 <a href="#research" class="nav-link">Research</a>
                 <a href="#publications" class="nav-link">Publications</a>
             </div>
@@ -49,7 +50,7 @@
                 <div class="hero-image">
                     <div class="profile-card">
                         <div class="profile-image">
-                            <img src="./photo.JPG" alt="Zirui Wang">
+                            <img src="./portrait.jpg" alt="Zirui Wang">
                         </div>
                         <div class="profile-info">
                             <h3>Zirui Wang</h3>
@@ -111,6 +112,21 @@
                             <p>Hangzhou Dianzi University</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            <div class="news-timeline-wrapper">
+                <div id="news-container" class="news-timeline">
+                    <!-- News items will be loaded from news_data.js -->
+                </div>
+                <div id="news-toggle-container" class="news-toggle-wrapper" style="display: none;">
+                    <button id="news-toggle-btn" class="btn btn-secondary">Show More</button>
                 </div>
             </div>
         </div>
@@ -192,6 +208,7 @@
         </div>
     </footer>
 
+    <script src="news_data.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
