@@ -1,213 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirui Wang - Academic Homepage</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zirui Wang — University of Virginia</title>
+<meta name="description" content="Zirui Wang is a PhD student in Computer Science at the University of Virginia, working on machine-learning systems and storage systems with Prof. Yue Cheng in the DS² Lab." />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<style>
+  :root {
+    --ink: #1c2230;
+    --muted: #5b667a;
+    --rule: #e4e8ee;
+    --link: #b94a25;
+    --link-hover: #8a3318;
+    --side: #f4f3ef;
+    --bg: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Source Sans 3", system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 16px; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { color: var(--link-hover); text-decoration: underline; }
+
+  /* Layout: sidebar anchored to the viewport's left edge,
+     main content centered inside the remaining space. */
+  .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); min-height: 100vh; }
+
+  /* ---------- Sidebar ---------- */
+  aside {
+    background: var(--side);
+    border-right: 1px solid var(--rule);
+    padding: 40px 28px;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .photo {
+    width: 240px;
+    margin: 0 auto 18px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--rule);
+  }
+  .photo img { display: block; width: 100%; height: auto; }
+
+  aside h1 { font-family: "Source Serif 4", Georgia, serif; font-size: 26px; text-align: center; font-weight: 700; margin-bottom: 4px; }
+  aside .title { text-align: center; color: var(--muted); font-size: 14px; margin-bottom: 4px; }
+  aside .affil { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 18px; line-height: 1.4; }
+
+  aside .contact { border-top: 1px solid var(--rule); padding-top: 16px; font-size: 14px; }
+  aside .contact div { display: flex; align-items: center; gap: 10px; padding: 6px 0; color: var(--muted); }
+  aside .contact div i { width: 16px; color: var(--link); text-align: center; }
+  aside .contact a { color: var(--ink); }
+  aside .contact a:hover { color: var(--link); }
+
+  aside nav { margin-top: 22px; border-top: 1px solid var(--rule); padding-top: 18px; }
+  aside nav a {
+    display: block;
+    padding: 8px 10px;
+    color: var(--ink);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  aside nav a:hover { background: rgba(185, 74, 37, 0.08); color: var(--link); text-decoration: none; }
+
+  /* ---------- Main column ---------- */
+  main {
+    padding: 56px 64px;
+    max-width: 920px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  main section { margin-bottom: 48px; scroll-margin-top: 24px; }
+  main h2 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--link);
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  main p { margin-bottom: 12px; color: #2c3243; }
+  main p strong { color: var(--ink); }
+
+  /* Education */
+  .edu-list { list-style: none; }
+  .edu-list li {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .edu-list .yr { font-weight: 600; color: var(--muted); font-size: 14px; }
+  .edu-list .deg { font-weight: 600; }
+  .edu-list .sch { color: var(--muted); font-size: 14px; }
+
+  /* News */
+  .news-list { list-style: none; }
+  .news-list li {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 18px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 15px;
+  }
+  .news-list .date { color: var(--link); font-weight: 600; font-size: 13px; padding-top: 2px; }
+
+  /* Scrollable news container — borderless, fades at top & bottom */
+  .news-scroll {
+    max-height: 460px;
+    overflow-y: auto;
+    padding: 4px 16px 4px 4px;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22px, #000 calc(100% - 22px), transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 22px, #000 calc(100% - 22px), transparent 100%);
+    scrollbar-width: thin;
+    scrollbar-color: #d8d3c8 transparent;
+  }
+  .news-scroll .news-list li {
+    padding: 12px 14px;
+    border-bottom: 1px dotted var(--rule);
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .news-scroll .news-list li:hover { background: rgba(185, 74, 37, 0.05); }
+  .news-scroll .news-list li:last-child { border-bottom: none; }
+  .news-scroll::-webkit-scrollbar { width: 6px; }
+  .news-scroll::-webkit-scrollbar-track { background: transparent; }
+  .news-scroll::-webkit-scrollbar-thumb { background: #d8d3c8; border-radius: 3px; }
+  .news-scroll::-webkit-scrollbar-thumb:hover { background: var(--link); }
+
+  /* Publications */
+  .pub-list { list-style: none; counter-reset: pub; }
+  .pub-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    padding-left: 36px;
+    counter-increment: pub;
+  }
+  .pub-list li::before {
+    content: "[" counter(pub) "]";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: "Source Serif 4", serif;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .pub-list .t { font-weight: 600; color: var(--ink); }
+  .pub-list .a { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .pub-list .a strong { color: var(--ink); }
+  .pub-list .v { font-style: italic; color: var(--link); font-size: 14px; margin-top: 2px; }
+  .pub-list .l { margin-top: 2px; }
+  .pub-list .l a { margin-right: 12px; font-size: 13px; }
+
+  /* Outside Research / hobbies */
+  .personal-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 14px;
+    margin: 6px 0 0;
+  }
+  .personal-line .hobby {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(185, 74, 37, 0.06);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--ink);
+    cursor: default;
+    transition: 0.18s ease;
+  }
+  .personal-line .hobby:hover {
+    background: rgba(185, 74, 37, 0.12);
+    border-color: var(--link);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px -8px rgba(185, 74, 37, 0.45);
+  }
+  .personal-line .hobby i { color: var(--link); font-size: 13px; }
+
+  /* Easter-egg tooltip on hover */
+  .personal-line .hobby[data-egg]::after {
+    content: attr(data-egg);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--ink);
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+  }
+  .personal-line .hobby[data-egg]::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    border: 6px solid transparent;
+    border-top-color: var(--ink);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 5;
+  }
+  .personal-line .hobby[data-egg]:hover::after,
+  .personal-line .hobby[data-egg]:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  footer.bottom {
+    margin-top: 60px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+  footer.bottom p { margin: 0 0 14px; color: var(--muted); }
+  .clustrmap-wrapper {
+    display: block;
+    margin: 12px auto 0;
+    width: 180px;
+    max-width: 180px;
+    opacity: 0.85;
+    overflow: hidden;
+  }
+  .clustrmap-wrapper img,
+  .clustrmap-wrapper svg,
+  .clustrmap-wrapper canvas,
+  .clustrmap-wrapper iframe {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+  /* Hide any internal <style>/<script>/text nodes the widget might inject */
+  .clustrmap-wrapper style,
+  .clustrmap-wrapper script { display: none !important; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    aside { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--rule); }
+    main { padding: 40px 24px; max-width: 100%; }
+    .photo { width: 200px; }
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">Zirui Wang</div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#news" class="nav-link">News</a>
-                <a href="#publications" class="nav-link">Publications</a>
+  <div class="layout">
+    <aside>
+      <div class="photo"><img src="./portrait.jpg" alt="Zirui Wang"></div>
+      <h1>Zirui Wang</h1>
+      <p class="title">PhD Candidate</p>
+      <p class="affil">Department of Computer Science<br>University of Virginia</p>
+      <div class="contact">
+        <div><i class="fas fa-envelope"></i><a href="mailto:eeb9sd@virginia.edu">eeb9sd@virginia.edu</a></div>
+        <div><i class="fas fa-file-pdf"></i><a href="./CV.pdf" target="_blank">CV</a></div>
+        <div><i class="ai ai-google-scholar"></i><a href="https://scholar.google.com/citations?user=LgRnfRAAAAAJ&hl=en" target="_blank">Google Scholar</a></div>
+        <div><i class="fab fa-github"></i><a href="https://github.com/JerryW35" target="_blank">GitHub · JerryW35</a></div>
+        <div><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/zirui-wang-7665aa336/" target="_blank">LinkedIn</a></div>
+        <div><i class="fas fa-map-marker-alt"></i>Charlottesville, VA, USA</div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#news">News</a>
+        <a href="#pubs">Publications</a>
+        <a href="#service">Academic Service</a>
+        <a href="#personal">Outside Research</a>
+      </nav>
+    </aside>
+
+    <main>
+      <section id="about">
+        <h2>Biography</h2>
+        <p>
+          I am a second-year Ph.D. candidate in Computer Science at the
+          University of Virginia, working under the supervision of
+          <a href="https://tddg.github.io/" target="_blank">Prof. Yue Cheng</a>
+          in the <a href="https://ds2-lab.github.io/" target="_blank">DS² Lab</a>.
+          My research interests span machine-learning systems, storage systems,
+          and distributed systems.
+        </p>
+        <p>
+          Prior to UVA, I received my M.S. in Computer Science from Boston
+          University and my B.S. from Hangzhou Dianzi University. I am dedicated
+          to building efficient and scalable systems for next-generation
+          data-intensive applications.
+        </p>
+        <p>
+          My research focuses on addressing challenges in real-world storage
+          systems, driven by the complexities of modern data-intensive computer
+          systems. I am particularly interested in <em>serverless AI</em>,
+          <em>storage systems for AI</em>, and <em>serverless computing</em>,
+          taking an end-to-end approach that spans applications, middleware,
+          platforms, and low-level operating systems.
+        </p>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <ul class="edu-list">
+          <li>
+            <span class="yr">2024 – present</span>
+            <div>
+              <div class="deg">Ph.D. in Computer Science</div>
+              <div class="sch">University of Virginia</div>
             </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+          </li>
+          <li>
+            <span class="yr">2022 – 2024</span>
+            <div>
+              <div class="deg">M.S. in Computer Science</div>
+              <div class="sch">Boston University</div>
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="typing-animation">Hello, I'm Zirui Wang</span>
-                    </h1>
-                    <p class="hero-subtitle">2nd-year PhD Student in Computer Science</p>
-                    <p class="hero-description">
-                        Research interests in machine learning systems and storage systems.
-                        Working on building efficient and scalable systems for next-generation data-intensive applications.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#publications" class="btn btn-primary">View Publications</a>
-                        <a href="./CV.pdf" class="btn btn-secondary" target="_blank">View CV</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                        <div class="profile-image">
-                            <img src="./portrait.jpg" alt="Zirui Wang">
-                        </div>
-                        <div class="profile-info">
-                            <h3>Zirui Wang</h3>
-                            <p>CS PhD Student</p>
-                            
-                            <div class="social-links">
-                                <a href="mailto:eeb9sd@virginia.edu" class="social-link"><i class="fas fa-envelope"></i></a>
-                                <a href="https://scholar.google.com/citations?user=LgRnfRAAAAAJ&hl=en" class="social-link"><i class="ai ai-google-scholar-square"></i></a>
-                                <a href="https://github.com/JerryW35" class="social-link"><i class="fab fa-github"></i></a>
-                                <a href="https://www.linkedin.com/in/zirui-wang-7665aa336/" class="social-link"><i class="fab fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </li>
+          <li>
+            <span class="yr">2018 – 2022</span>
+            <div>
+              <div class="deg">B.S. in Computer Science</div>
+              <div class="sch">Hangzhou Dianzi University</div>
             </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="news">
+        <h2>News</h2>
+        <div class="news-scroll">
+          <ul class="news-list">
+            
+            <li>
+              <span class="date">May 2026</span>
+              <div>Excited to start my summer internship at ByteDance Seed (San Jose, CA) this summer!</div>
+            </li>
+            <li>
+                <span class="date">May 2026</span>
+                <div>Passed my Ph.D. qualifying exam — officially a <strong>Ph.D. Candidate</strong> now!</div>
+              </li>
+            <li>
+              <span class="date">Apr 2026</span>
+              <div>Honored to serve on the Artifact Evaluation Committee for <a href="https://www.usenix.org/conference/osdi26" target="_blank">OSDI 2026</a>.</div>
+            </li>
+            <li>
+              <span class="date">Jan 2026</span>
+              <div>Our paper <a href="https://arxiv.org/abs/2506.02006" target="_blank"><em>MorphServe: Efficient and Workload-Aware LLM Serving via Runtime Quantized Layer Swapping and KV Cache Resizing</em></a> has been accepted to <a href="https://mlsys.org/" target="_blank">MLSys 2026</a>!</div>
+            </li>
+            <li>
+              <span class="date">Jan 2026</span>
+              <div>Our paper <a href="https://arxiv.org/abs/2502.09922" target="_blank"><em>λScale: Enabling Fast Scaling for Serverless Large Language Model Inference</em></a> has been accepted to <a href="https://mlsys.org/" target="_blank">MLSys 2026</a>!</div>
+            </li>
+            <li>
+              <span class="date">Dec 2025</span>
+              <div>I am honored to serve on the Artifact Evaluation Committee for <a href="https://www.usenix.org/conference/nsdi26/call-for-artifacts" target="_blank">NSDI'26 Fall</a>.</div>
+            </li>
+            <li>
+              <span class="date">Oct 2025</span>
+              <div>I joined the Shadow PC for <a href="https://2026.eurosys.org/" target="_blank">EuroSys 2026</a>.</div>
+            </li>
+            <li>
+              <span class="date">Oct 2025</span>
+              <div>Our paper <em>ZipLLM</em> (NSDI'26) received all three Artifact Evaluation badges (Available, Functional, Reproduced).</div>
+            </li>
+            <li>
+              <span class="date">Jul 2025</span>
+              <div>Our paper <a href="https://arxiv.org/abs/2505.06252" target="_blank"><em>ZipLLM</em></a> has been accepted to <a href="https://www.usenix.org/conference/nsdi26" target="_blank">NSDI 2026</a>!</div>
+            </li>
+            <li>
+              <span class="date">Jun 2025</span>
+              <div>Our new preprint <a href="https://arxiv.org/abs/2506.02006" target="_blank"><em>MorphServe</em></a> is now available on arXiv.</div>
+            </li>
+          </ul>
         </div>
-        <div class="scroll-indicator">
-            <span></span>
+      </section>
+
+      <section id="pubs">
+        <h2>Publications</h2>
+        <ul class="pub-list">
+          <li>
+            <div class="t">MorphServe: Efficient and Workload-Aware LLM Serving via Runtime Quantized Layer Swapping and KV Cache Resizing</div>
+            <div class="a">Zhaoyuan Su, Zeyu Zhang, Tingfeng Lan, <strong>Zirui Wang</strong>, Haiying Shen, Juncheng Yang, Yue Cheng</div>
+            <div class="v">Ninth Annual Conference on Machine Learning and Systems (MLSys 2026)</div>
+            <div class="l"><a href="https://arxiv.org/abs/2506.02006" target="_blank">[PDF]</a></div>
+          </li>
+          <li>
+            <div class="t">λScale: Enabling Fast Scaling for Serverless Large Language Model Inference</div>
+            <div class="a">Minchen Yu, Rui Yang, Chaobo Jia, Zhaoyuan Su, Sheng Yao, Tingfeng Lan, Yuchen Yang, <strong>Zirui Wang</strong>, Yue Cheng, Wei Wang, Ao Wang, Ruichuan Chen</div>
+            <div class="v">Ninth Annual Conference on Machine Learning and Systems (MLSys 2026)</div>
+            <div class="l"><a href="https://arxiv.org/abs/2502.09922" target="_blank">[PDF]</a></div>
+          </li>
+          <li>
+            <div class="t">Towards Efficient LLM Storage Reduction via Tensor Deduplication and Delta Compression</div>
+            <div class="a"><strong>Zirui Wang</strong>, Tingfeng Lan, Zhaoyuan Su, Juncheng Yang, Yue Cheng</div>
+            <div class="v">23rd USENIX Symposium on Networked Systems Design and Implementation (NSDI 2026)</div>
+            <div class="l"><a href="https://arxiv.org/abs/2505.06252" target="_blank">[PDF]</a></div>
+          </li>
+          <li>
+            <div class="t">Everything You Always Wanted to Know About Storage Compressibility of Pre-Trained ML Models but Were Afraid to Ask</div>
+            <div class="a">Zhaoyuan Su, Ammar Ahmed, <strong>Zirui Wang</strong>, Ali Anwar, Yue Cheng</div>
+            <div class="v">50th International Conference on Very Large Data Bases (VLDB 2024)</div>
+            <div class="l"><a href="https://arxiv.org/abs/2402.13429" target="_blank">[PDF]</a></div>
+          </li>
+          <li>
+            <div class="t">Temporal Cue Guided Video Highlight Detection with Low-Rank Audio-Visual Fusion</div>
+            <div class="a">Qinghao Ye*, Xiyue Shen*, Yuan Gao*, <strong>Zirui Wang</strong>*, Qi Bi, Ping Li, Guang Yang</div>
+            <div class="v">International Conference on Computer Vision (ICCV 2021)</div>
+            <div class="l"><a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Ye_Temporal_Cue_Guided_Video_Highlight_Detection_With_Low-Rank_Audio-Visual_Fusion_ICCV_2021_paper.pdf" target="_blank">[PDF]</a></div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="service">
+        <h2>Academic Service</h2>
+        <ul class="news-list">
+          <li><span class="date">2026</span><div>Artifact Evaluation Committee — USENIX OSDI 2026</div></li>
+          <li><span class="date">2026</span><div>Artifact Evaluation Committee — USENIX NSDI 2026 (Fall)</div></li>
+          <li><span class="date">2026</span><div>Shadow Program Committee — EuroSys 2026</div></li>
+          <li><span class="date">2026</span><div>Reviewer — ACM Transactions on Storage (TOS)</div></li>
+        </ul>
+      </section>
+
+      <section id="personal">
+        <h2>Outside Research</h2>
+        <p class="personal-line">
+          <span class="hobby" data-egg="Go KD!"><i class="fas fa-basketball-ball"></i> Playing basketball</span>
+          <span class="hobby" data-egg="Dudududu~"><i class="fas fa-flag-checkered"></i> Watching F1</span>
+          <span class="hobby" data-egg="We are Falcons!"><i class="fas fa-crosshairs"></i> Watching CS2 esports</span>
+          <span class="hobby" data-egg="Long live the French Knights!"><i class="fas fa-chess-rook"></i> Age of Empires IV — World Top 1000</span>
+          <span class="hobby" data-egg="Ionia still stands!"><i class="fas fa-dragon"></i> Playing League of Legends</span>
+        </p>
+      </section>
+
+      <footer class="bottom">
+        <p>© 2026 Zirui Wang · Department of Computer Science, University of Virginia</p>
+        <div class="clustrmap-wrapper">
+          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=jgvG1Cz5n6A4qeQr02pL8lp-TmS6aqfLnJ4dw1TuKX0&cl=ffffff&w=a"></script>
         </div>
-    </section>
+      </footer>
+    </main>
+  </div>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am a PhD student in Computer Science at the University of Virginia, working under the supervision of <a href="https://tddg.github.io/" target="_blank">Prof. Yue Cheng</a> in the <a href="https://ds2-lab.github.io/" target="_blank">DS2 Lab</a>. 
-                        My research interests include machine learning systems, cache systems, and distributed systems. 
-                        I am dedicated to building efficient and scalable systems for next-generation data-intensive applications.
-                    </p>
-                    <p>
-                        My research focuses on addressing challenges in real-world storage systems, driven by the complexities of modern 
-                        data-intensive computer systems. I am particularly interested in serverless AI, storage systems for AI, and serverless computing 
-                        using an end-to-end approach that spans applications, middleware, platforms, and low-level operating systems.
-                    </p>
-                </div>
-                <div class="education">
-                    <h3>Education</h3>
-                    <div class="education-item">
-                        <div class="education-year">2024 - Present</div>
-                        <div class="education-details">
-                            <h4>PhD in Computer Science</h4>
-                            <p>University of Virginia</p>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-year">2022 - 2024</div>
-                        <div class="education-details">
-                            <h4>MS in Computer Science</h4>
-                            <p>Boston University</p>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-year">2018 - 2022</div>
-                        <div class="education-details">
-                            <h4>BS in Computer Science</h4>
-                            <p>Hangzhou Dianzi University</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">News</h2>
-            <div class="news-timeline-wrapper">
-                <div id="news-container" class="news-timeline">
-                    <!-- News items will be loaded from news_data.js -->
-                </div>
-                <div id="news-toggle-container" class="news-toggle-wrapper" style="display: none;">
-                    <button id="news-toggle-btn" class="btn btn-secondary">Show More</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications" class="section">
-        <div class="container">
-            <h2 class="section-title">Publications</h2>
-            <div class="publications-container">
-
-                <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <div class="publication-content">
-                        <h3>"Efficient and Workload-Aware LLM Serving via Runtime Layer Swapping and KV Cache Resizing"</h3>
-                        <p class="authors">Zhaoyuan Su, Tingfeng Lan, <strong>Zirui Wang</strong>, Juncheng Yang, Yue Cheng</p>
-                        <p class="venue">Preprint</p>
-
-                        <div class="publication-links">
-                            <a href="https://www.arxiv.org/abs/2506.02006" class="pub-link">PDF</a>
-                        </div>
-                    </div>
-                </div>
-        
-
-                <div class="publication-item">
-                    <div class="publication-year">2025</div>
-                    <div class="publication-content">
-                        <h3>"Towards Efficient LLM Storage Reduction via Tensor Deduplication and Delta Compression"</h3>
-                        <p class="authors"><strong>Zirui Wang</strong>, Tingfeng Lan, Zhaoyuan Su, Juncheng Yang, Yue Cheng</p>
-                        <p class="venue">23rd USENIX Symposium on Networked Systems Design and Implementation (NSDI 2026)</p>
-                        <div class="publication-links">
-                            <a href="https://arxiv.org/abs/2505.06252" class="pub-link">PDF</a>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                
-                
-                <div class="publication-item">
-                    <div class="publication-year">2024</div>
-                    <div class="publication-content">
-                        <h3>"Everything You Always Wanted to Know About Storage Compressibility of Pre-Trained ML Models but Were Afraid to Ask"</h3>
-                        <p class="authors">Zhaoyuan Su, Ammar Ahmed, <strong>Zirui Wang</strong>, Ali Anwar, Yue Cheng</p>
-                        <p class="venue">50th International Conference on Very Large Data Bases (VLDB 2024)</p>
-
-                    <div class="publication-links">
-                        <a href="https://arxiv.org/abs/2402.13429" class="pub-link">PDF</a>
-                </div>
-                    </div>
-                </div>
-                
-                <div class="publication-item">
-                    <div class="publication-year">2021</div>
-                    <div class="publication-content">
-                        <h3>"Temporal Cue Guided Video Highlight Detection with Low-Rank Audio-Visual Fusion"</h3>
-                        <p class="authors">Qinghao Ye*, Xiyue Shen*, Yuan Gao*, <strong>Zirui Wang</strong>*, Qi Bi, Ping Li, Guang Yang</p>
-                        <p class="venue">International Conference on Computer Vision (ICCV 2021)</p>
-                        <div class="publication-links">
-                            <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Ye_Temporal_Cue_Guided_Video_Highlight_Detection_With_Low-Rank_Audio-Visual_Fusion_ICCV_2021_paper.pdf" class="pub-link">PDF</a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Zirui Wang. All rights reserved.</p>
-            <div class="clustrmap-wrapper">
-                <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=jgvG1Cz5n6A4qeQr02pL8lp-TmS6aqfLnJ4dw1TuKX0&cl=ffffff&w=a"></script>           
-            </div>
-        </div>
-    </footer>
-
-    <script src="news_data.js"></script>
-    <script src="script.js"></script>
 </body>
-</html> 
+</html>
