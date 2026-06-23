@@ -248,21 +248,22 @@
     margin: 12px auto 0;
     width: 180px;
     max-width: 180px;
+    min-height: 90px;
     opacity: 0.85;
     overflow: hidden;
   }
   .clustrmap-wrapper img,
   .clustrmap-wrapper svg,
   .clustrmap-wrapper canvas,
-  .clustrmap-wrapper iframe {
+  .clustrmap-wrapper iframe,
+  .clustrmap-wrapper > div {
     max-width: 100% !important;
     width: 100% !important;
     height: auto !important;
     display: block;
   }
-  /* Hide any internal <style>/<script>/text nodes the widget might inject */
-  .clustrmap-wrapper style,
-  .clustrmap-wrapper script { display: none !important; }
+  /* Hide injected style text only — do NOT hide the loader <script> */
+  .clustrmap-wrapper style { display: none !important; }
 
   /* Responsive */
   @media (max-width: 900px) {
@@ -359,7 +360,7 @@
             
             <li>
               <span class="date">May 2026</span>
-              <div>Excited to start my summer internship at ByteDance Seed (San Jose, CA) this summer!</div>
+              <div>Excited to start my internship at ByteDance Seed (San Jose, CA) this summer!</div>
             </li>
             <li>
                 <span class="date">May 2026</span>
@@ -460,8 +461,8 @@
 
       <footer class="bottom">
         <p>© 2026 Zirui Wang · Department of Computer Science, University of Virginia</p>
-        <div class="clustrmap-wrapper">
-          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=jgvG1Cz5n6A4qeQr02pL8lp-TmS6aqfLnJ4dw1TuKX0&cl=ffffff&w=a"></script>
+        <div class="clustrmap-wrapper" id="clustrmap-container">
+          <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=jgvG1Cz5n6A4qeQr02pL8lp-TmS6aqfLnJ4dw1TuKX0&cl=ffffff&w=a"></script>
         </div>
       </footer>
     </main>
